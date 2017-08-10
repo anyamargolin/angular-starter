@@ -16,7 +16,9 @@ import { AppState } from './app.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    './app.component.css'
+    './app.component.css',
+    
+    //'../../node_modules/bootstrap/dist/css/bootstrap.css',
   ],
   template: `
     <nav>

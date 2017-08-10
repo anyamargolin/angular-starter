@@ -4,7 +4,7 @@
 
 const webpack = require('webpack');
 const helpers = require('./helpers');
-
+const path=require('path');
 /**
  * Webpack Plugins
  *
@@ -75,13 +75,14 @@ module.exports = function (options) {
      */
     resolve: {
 
+     
       /**
        * An array of extensions that should be used to resolve modules.
        *
        * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
        */
       extensions: ['.ts', '.js', '.json'],
-
+     
       /**
        * An array of directory names to be resolved to the current directory
        */
@@ -97,7 +98,22 @@ module.exports = function (options) {
     module: {
 
       rules: [
-
+      
+              {
+                  test: /\.less$/,
+                  use: [{
+                      loader: "style-loader"
+                  }, {
+                      loader: "css-loader"
+                  }, {
+                      loader: "less-loader", options: {
+                          paths: [
+                              path.resolve(__dirname, "../node_modules")
+                          ]
+                      }
+                  }]
+              },
+          
         /**
          * Typescript loader support for .ts
          *
